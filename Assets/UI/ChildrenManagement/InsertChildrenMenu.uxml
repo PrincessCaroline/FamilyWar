@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(40, 47, 120); padding-top: 33%;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgb(49, 255, 135); align-items: center; align-self: stretch; justify-content: center;">
+            <ui:VisualElement style="flex-grow: 0; width: 500px; height: 500px; align-items: center;" />
+            <ui:TextField picking-mode="Ignore" label="Nom" value="???" is-delayed="false" style="font-size: 100px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="totoTaskReward" style="flex-grow: 0; height: 20%;" />
+    </ui:VisualElement>
+</ui:UXML>

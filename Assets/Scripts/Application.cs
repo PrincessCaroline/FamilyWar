@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Application : MonoBehaviour
 {
+    #region Navigation
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
@@ -24,4 +25,5 @@ public class Application : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    #endregion
 }

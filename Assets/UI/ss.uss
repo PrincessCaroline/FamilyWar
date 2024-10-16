@@ -12,6 +12,13 @@
     color: rgb(40, 47, 120);
 }
 
+.button:hover {
+    background-color: rgb(247, 255, 49);
+    scale: 1.1 1.1;
+    transition-duration: 0.25s;
+    transition-delay: 0s;
+}
+
 .background {
     background-color: rgb(40, 47, 120);
     flex-grow: 1;
@@ -31,13 +38,6 @@
     padding-left: 0;
 }
 
-.button:hover {
-    background-color: rgb(247, 255, 49);
-    scale: 1.1 1.1;
-    transition-duration: 0.25s;
-    transition-delay: 0s;
-}
-
 .back_button {
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
@@ -47,4 +47,18 @@
 
 .back_button:hover {
     color: rgb(255, 240, 0);
+}
+
+.listview {
+}
+
+.list {
+}
+
+.childrenPanel {
+    background-color: rgb(49, 255, 135);
+    align-items: center;
+    width: auto;
+    align-self: center;
+    height: auto;
 }
