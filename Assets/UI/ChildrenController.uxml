@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ss.uss?fileID=7433441132597879392&amp;guid=ff7716c82d2954349a6817b176ad0084&amp;type=3#ss" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; justify-content: center; flex-basis: 20%; align-self: auto; align-items: center; padding-left: 15%; padding-right: 15%; background-color: rgb(40, 47, 120); flex-direction: column; -unity-background-image-tint-color: rgb(255, 255, 255); padding-top: 15%;">
+        <ui:Button text="REWARD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RewardMenu" class="button" style="flex-direction: column; justify-content: flex-end; align-items: center; align-self: center; position: absolute; bottom: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 90%;" />
+    </ui:VisualElement>
+</ui:UXML>
