@@ -1,9 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ss.uss?fileID=7433441132597879392&amp;guid=ff7716c82d2954349a6817b176ad0084&amp;type=3#ss" />
     <ui:VisualElement style="flex-grow: 1; background-color: rgb(40, 47, 120); padding-top: 33%;">
-        <ui:VisualElement style="flex-grow: 1; background-color: rgb(49, 255, 135); align-items: center; align-self: stretch; justify-content: center;">
-            <ui:VisualElement style="flex-grow: 0; width: 500px; height: 500px; align-items: center;" />
-            <ui:TextField picking-mode="Ignore" label="Nom" value="???" is-delayed="false" style="font-size: 100px;" />
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); align-items: center; align-self: stretch; justify-content: center;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 500px; height: 500px; align-items: center; background-color: rgb(49, 255, 135);" />
+            <ui:TextField picking-mode="Ignore" value="Prénom" is-delayed="false" style="font-size: 100px; background-color: rgb(49, 255, 135); -unity-background-image-tint-color: rgb(49, 255, 135);" />
+            <ui:IntegerField value="42" style="font-size: 70px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="totoTaskReward" style="flex-grow: 0; height: 20%;" />
+        <ui:VisualElement name="todoTaskReward" style="flex-grow: 0; height: 20%;">
+            <ui:Button text="OK" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InsertChildren" class="button" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: auto; height: auto; align-items: center; align-self: center;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

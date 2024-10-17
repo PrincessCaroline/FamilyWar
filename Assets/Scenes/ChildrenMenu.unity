@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Root: {fileID: 490459417}
+  InsertPanel: {fileID: 1095047242}
   ChildrenItemTemplate: {fileID: 9197481963319205126, guid: 3051cce3010475a4ea137e0d4c91abb6, type: 3}
 --- !u!1 &901450712
 GameObject:
@@ -261,7 +262,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: edde63e7da5f66a44b67f5d5e0a53666, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 3b0abadcc41f0e9459ecb3b199fc4592, type: 3}
-  m_SortingOrder: 3
+  m_SortingOrder: 2
 --- !u!4 &1095047243
 Transform:
   m_ObjectHideFlags: 0
@@ -417,7 +418,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: edde63e7da5f66a44b67f5d5e0a53666, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 899e0a70ef1e68a47ab79bb485a6ba60, type: 3}
-  m_SortingOrder: 2
+  m_SortingOrder: 10
 --- !u!4 &1683447078
 Transform:
   m_ObjectHideFlags: 0
@@ -440,5 +441,5 @@ SceneRoots:
   - {fileID: 1238935653}
   - {fileID: 901450714}
   - {fileID: 490459418}
-  - {fileID: 1683447078}
   - {fileID: 1095047243}
+  - {fileID: 1683447078}
