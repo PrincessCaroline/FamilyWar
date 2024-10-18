@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Text.Json;
 
 public class ChildrenMenuUI : MonoBehaviour
 {
@@ -17,51 +18,70 @@ public class ChildrenMenuUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Button AddChildrenButton = Root.rootVisualElement.Q<Button>("AddChildrenButton");
-        AddChildrenButton.clicked += () => { InsertPanel.enabled = true; };
+        // Initialize Main
+        Button ShowInsertPlayerPanelButton = Root.rootVisualElement.Q<Button>("AddChildrenButton");
+        ShowInsertPlayerPanelButton.clicked += () => ShowPanel(InsertPanel, true);
 
-        Button InsertChildrenButton = InsertPanel.rootVisualElement.Q<Button>("InsertChildren");
-        InsertChildrenButton.clicked += () => InsertChildren();
+        // Initialize InsertPanel
+        Button InsertPlayerButton = InsertPanel.rootVisualElement.Q<Button>("InsertChildren");
+        InsertPlayerButton.clicked += () => InsertPlayer();
 
-        InitializeChildrenList();
+        ShowPanel(InsertPanel, false);
+        LoadPlayerList();
     }
 
-    public void InsertChildren()
+    public void ShowPanel(UIDocument panel, bool show)
+    {
+        panel.rootVisualElement.style.display = (show) ? DisplayStyle.Flex : DisplayStyle.None;
+    }
+
+    public void InsertPlayer()
     {
         TextField FirstnameInput = InsertPanel.rootVisualElement.Q<TextField>("FirstnameInput");
         IntegerField AgeInput = InsertPanel.rootVisualElement.Q<IntegerField>("AgeInput");
 
-        ChildrenModel temp = new ChildrenModel();
-        temp.name = FirstnameInput.text;
-        temp.age = AgeInput.intValue;
+        PlayerModel newPlayer = new PlayerModel();
+        newPlayer.name = FirstnameInput.text;
+        newPlayer.age = AgeInput.value;
 
+        /// SAVE DATA
+        ApplicationModel backup = SaveModel.Instance.Load();
+        backup.players.Add(newPlayer);
+        SaveModel.Instance.Save(backup);
 
-        
- 
-
-        TemplateContainer childrenItemTemp = ChildrenItemTemplate.Instantiate();
-
-        Label name = childrenItemTemp.Q<Label>("Name");
-        if (name != null)
-            name.text = "1";
-        else
-            Debug.LogWarning($"Could not find \"Name\" Label.");
-
-        Label age = childrenItemTemp.Q<Label>("Age");
-        if (age != null)
-            age.text = "1";
-        else
-            Debug.LogWarning($"Could not find \"age\" Label.");
-
-        //child the template to the UIDocument so it will be rendered and updated
-        Root.rootVisualElement.Q<ScrollView>("ChildrenListRoot").Add(childrenItemTemp);
+        LoadPlayerList();
+        ShowPanel(InsertPanel, false);
     }
 
-    public void InitializeChildrenList()
+
+    public void LoadPlayerList()
     {
-        // Read JSON
-        // Empty List
-        // Init List
+        ApplicationModel backup = SaveModel.Instance.Load();
+
+        if (backup != null)
+        {
+            foreach (PlayerModel player in backup.players)
+            {
+                TemplateContainer PlayerItemTemp = ChildrenItemTemplate.Instantiate();
+
+                // SET Name
+                Label name = PlayerItemTemp.Q<Label>("Name");
+                if (name != null)
+                    name.text = player.name;
+                else
+                    Debug.LogWarning($"Could not find \"Name\" Label.");
+
+                // SET Age
+                Label age = PlayerItemTemp.Q<Label>("Age");
+                if (age != null)
+                    age.text = player.age.ToString();
+                else
+                    Debug.LogWarning($"Could not find \"age\" Label.");
+
+                // Child the template to the UIDocument so it will be rendered and updated
+                Root.rootVisualElement.Q<ScrollView>("ChildrenListRoot").Add(PlayerItemTemp);
+            }
+        }
     }
 }
 

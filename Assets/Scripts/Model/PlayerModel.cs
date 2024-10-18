@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChildrenModel
+[System.Serializable]
+public class PlayerModel
 {
     public int      id;
     public string   name;
