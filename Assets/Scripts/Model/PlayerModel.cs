@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerModel
 {
-    public int      id;
+    public Guid      id;
     public string   name;
     public int      age;
 }

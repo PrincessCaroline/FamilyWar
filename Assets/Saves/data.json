@@ -1,9 +1,19 @@
 {
   "players": [
     {
-      "id": 0,
-      "name": "Prénom",
-      "age": 42
+      "id": "90b5e4ab-2841-418a-ab4c-bfaff543c460",
+      "name": "tata cricr",
+      "age": 60
+    },
+    {
+      "id": "fb603c3e-b73a-45e6-b696-de2ea28eada7",
+      "name": "Grominete",
+      "age": 97
+    },
+    {
+      "id": "2aa4e737-c9c5-497f-81b8-434649f2d514",
+      "name": "tete",
+      "age": 15
     }
   ]
 }

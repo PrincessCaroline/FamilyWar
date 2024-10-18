@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 490459417}
   - component: {fileID: 490459419}
   m_Layer: 5
-  m_Name: UIChildrenMenu
+  m_Name: UIPlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Root: {fileID: 490459417}
-  InsertPanel: {fileID: 1095047242}
+  ActionPanel: {fileID: 1095047242}
   ChildrenItemTemplate: {fileID: 9197481963319205126, guid: 3051cce3010475a4ea137e0d4c91abb6, type: 3}
 --- !u!1 &901450712
 GameObject:
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 1095047243}
   - component: {fileID: 1095047242}
   m_Layer: 5
-  m_Name: UIInsertChildren
+  m_Name: UIPlayerAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
