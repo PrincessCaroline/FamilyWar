@@ -6,5 +6,6 @@
             <ui:Label tabindex="-1" text="Nom" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" class="title" style="font-size: 70px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: auto; flex-grow: 0;" />
             <ui:Label tabindex="-1" text="Age" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Age" class="title" style="font-size: 30px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: auto; flex-grow: 0; -unity-font-style: normal;" />
         </ui:VisualElement>
+        <ui:Button text="x" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteButton" class="button" style="width: 50px; height: 50px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 40%; background-image: none; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
     </ui:Button>
 </ui:UXML>
