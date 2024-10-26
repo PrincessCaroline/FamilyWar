@@ -1,15 +1,19 @@
 .button {
-    font-size: 75px;
-    background-color: rgb(49, 255, 135);
+    font-size: 50px;
+    background-color: rgb(52, 128, 119);
     width: 100%;
-    height: 10%;
-    margin-top: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-    margin-left: 5%;
+    height: 150px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
     -unity-font: initial;
     -unity-font-style: bold;
-    color: rgb(40, 47, 120);
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+    border-bottom-left-radius: 75px;
 }
 
 .button:hover {
@@ -25,10 +29,10 @@
 }
 
 .title {
-    color: rgb(40, 47, 120);
+    color: rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0);
-    font-size: 75px;
-    -unity-font-style: bold;
+    font-size: 100%;
+    -unity-font-style: normal;
     -unity-text-align: middle-left;
     flex-grow: 1;
     margin-left: 0;
@@ -61,4 +65,30 @@
     width: auto;
     align-self: center;
     height: auto;
+}
+
+.imageButton {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.stain {
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: none;
+    background-color: rgb(238, 147, 166);
+    width: 100%;
+    height: 300px;
+    flex-direction: row;
+}
+
+.stain:hover {
+    transition-property: scale;
+    transition-duration: 1s;
 }
