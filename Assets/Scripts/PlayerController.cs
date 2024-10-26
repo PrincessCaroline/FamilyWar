@@ -8,28 +8,27 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    UIDocument Root;
-
-    [SerializeField]
-    UIDocument ActionPanel;
-
-    [SerializeField]
-    VisualTreeAsset ChildrenItemTemplate;
-
     private const string PRENOM_PLACEHOLDER = "PRENOM";
     private const int AGE_PLACEHOLDER = 0;
 
+    private TemplateContainer _mainPanelRoot;
+    private TemplateContainer _actionPanelRoot;
+    private VisualTreeAsset _childrenItemTemplate;
+
     private Guid _selectedPlayer;
 
-    private void OnEnable()
+    public void Initialize(TemplateContainer mainPanelRoot, TemplateContainer actionPanelRoot, VisualTreeAsset childrenItemTemplate)
     {
+        _mainPanelRoot = mainPanelRoot;
+        _actionPanelRoot = actionPanelRoot;
+        _childrenItemTemplate = childrenItemTemplate;
+
         // Initialize Main
-        Button ShowActionPanelButton = Root.rootVisualElement.Q<Button>("AddChildrenButton");
+        Button ShowActionPanelButton = _mainPanelRoot.Q<Button>("AddPlayerButton");
         ShowActionPanelButton.clicked += () => { _selectedPlayer = Guid.Empty; ShowActionPanel(true); };
 
-        // Initialize InsertPanel
-        Button ActionButton = ActionPanel.rootVisualElement.Q<Button>("InsertChildren");
+        // Initialize ActionPanel
+        Button ActionButton = _actionPanelRoot.Q<Button>("InsertPlayer");
         ActionButton.clicked += () => ActionPlayer();
 
         ShowActionPanel(false);
@@ -39,7 +38,7 @@ public class PlayerController : MonoBehaviour
     #region UI
     private void ShowActionPanel(bool show)
     {
-        ActionPanel.rootVisualElement.style.display = (show) ? DisplayStyle.Flex : DisplayStyle.None;
+        _actionPanelRoot.style.display = (show) ? DisplayStyle.Flex : DisplayStyle.None;
 
         if (show)
         {
@@ -49,8 +48,8 @@ public class PlayerController : MonoBehaviour
 
     private void ResetActionPanel()
     {
-        TextField firstnameInput = ActionPanel.rootVisualElement.Q<TextField>("FirstnameInput");
-        IntegerField ageInput = ActionPanel.rootVisualElement.Q<IntegerField>("AgeInput");
+        TextField firstnameInput = _actionPanelRoot.Q<TextField>("FirstnameInput");
+        IntegerField ageInput = _actionPanelRoot.Q<IntegerField>("AgeInput");
 
         if (_selectedPlayer == Guid.Empty)
         {
@@ -72,11 +71,11 @@ public class PlayerController : MonoBehaviour
 
         if (backup != null)
         {
-            Root.rootVisualElement.Q<ScrollView>("ChildrenListRoot").Clear();
+            _mainPanelRoot.Q<ScrollView>("PlayerListRoot").Clear();
 
             foreach (PlayerModel player in backup.players)
             {
-                TemplateContainer PlayerItemTemp = ChildrenItemTemplate.Instantiate();
+                TemplateContainer PlayerItemTemp = _childrenItemTemplate.Instantiate();
 
                 // SET Name
                 Label name = PlayerItemTemp.Q<Label>("Name");
@@ -102,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 PlayerItemTemp.RegisterCallback<ClickEvent>((evt) => { { _selectedPlayer = player.id; }; ShowActionPanel(true); });
 
                 // Child the template to the UIDocument so it will be rendered and updated
-                Root.rootVisualElement.Q<ScrollView>("ChildrenListRoot").Add(PlayerItemTemp);
+                _mainPanelRoot.Q<ScrollView>("PlayerListRoot").Add(PlayerItemTemp);
             }
         }
     }
@@ -122,8 +121,8 @@ public class PlayerController : MonoBehaviour
 
     private void InsertPlayer()
     {
-        TextField firstnameInput = ActionPanel.rootVisualElement.Q<TextField>("FirstnameInput");
-        IntegerField ageInput = ActionPanel.rootVisualElement.Q<IntegerField>("AgeInput");
+        TextField firstnameInput = _actionPanelRoot.Q<TextField>("FirstnameInput");
+        IntegerField ageInput = _actionPanelRoot.Q<IntegerField>("AgeInput");
 
         PlayerModel newPlayer = new PlayerModel();
         newPlayer.name = firstnameInput.text;
@@ -141,8 +140,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePlayer()
     {
-        TextField firstnameInput = ActionPanel.rootVisualElement.Q<TextField>("FirstnameInput");
-        IntegerField ageInput = ActionPanel.rootVisualElement.Q<IntegerField>("AgeInput");
+        TextField firstnameInput = _actionPanelRoot.Q<TextField>("FirstnameInput");
+        IntegerField ageInput = _actionPanelRoot.Q<IntegerField>("AgeInput");
 
         ApplicationModel backup = SaveModel.Instance.Load();
         backup.players.FirstOrDefault(p => p.id == _selectedPlayer).name = firstnameInput.text;

@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -16,21 +19,39 @@ public class MasterController : MonoBehaviour
     public ConfigurationModel.Scene GoToScene;
 
     [SerializeField]
-    VisualTreeAsset PageContent;
+    VisualTreeAsset MainPageContent;
+
+    [SerializeField]
+    VisualTreeAsset ActionPanelContent;
+
+    [SerializeField]
+    VisualTreeAsset ListItemTemplate;
+
+    private Guid _selectedItem = Guid.Empty;
 
     private void OnEnable()
     {
-        Label ChildrenMenuTitle = Root.rootVisualElement.Q<Label>("HeaderTitle");
-        ChildrenMenuTitle.text = Title;
+        Label menuTitle = Root.rootVisualElement.Q<Label>("HeaderTitle");
+        menuTitle.text = Title;
 
-        Button BackButton = Root.rootVisualElement.Q<Button>("BackButton");
-        BackButton.clicked += () => SceneManager.LoadScene((int)GoToScene);
+        Button backButton = Root.rootVisualElement.Q<Button>("BackButton");
+        backButton.clicked += () => SceneManager.LoadScene((int)GoToScene);
 
-        TemplateContainer Page = PageContent.Instantiate();
-
-        // DO STUFF
+        TemplateContainer mainContent = MainPageContent.Instantiate();
+        TemplateContainer actionContent = ActionPanelContent.Instantiate();
 
         VisualElement ContentRoot = Root.rootVisualElement.Q<VisualElement>("Content");
-        ContentRoot.Add(Page);
+        ContentRoot.Add(mainContent);
+        ContentRoot.Add(actionContent);
+        mainContent.StretchToParentWidth();
+        actionContent.StretchToParentWidth();
+
+        // Initialize Main
+        PlayerController playerController = GetComponent<PlayerController>();
+
+        if (playerController != null)
+        {
+            playerController.Initialize(mainContent, actionContent, ListItemTemplate);
+        }
     }
 }
